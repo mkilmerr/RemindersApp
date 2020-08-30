@@ -21,11 +21,27 @@ class MainViewController: UIViewController {
         
         addCategoriesViewTarget()
         setupSearchBar()
+        setupNavigationButton()
+        
+        
         
     }
     
     
     
+}
+
+//MARK:- NAVIGATION ITEM
+
+extension MainViewController {
+    
+    @objc func setupNavigationButton() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
+    }
+    
+    @objc func editTapped() {
+       self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupNavigationButton))
+    }
 }
 
 //MARK:- SEARCH BAR
