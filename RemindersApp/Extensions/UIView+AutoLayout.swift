@@ -6,4 +6,12 @@
 //  Copyright © 2020 mkilmer. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIView {
+    
+    func addSubviewWithAutoLayout(_ view:UIView ) {
+        self.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false 
+    }
+}
