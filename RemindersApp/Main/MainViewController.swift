@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
         
     }
     
+
 }
 
 //MARK:- NAVIGATION ITEM
@@ -87,18 +88,22 @@ extension MainViewController {
 extension MainViewController {
     
     @objc func todayViewTapped() {
+        self.mainView.todayView.scaleAnimation(self.mainView.todayView)
         self.mainView.todayView.backgroundColor = .blue
     }
     
     @objc func scheduledViewTapped() {
+        self.mainView.scheduledView.scaleAnimation(self.mainView.scheduledView)
         self.mainView.scheduledView.backgroundColor = .blue
     }
     
     @objc func allViewTapped() {
+        self.mainView.scheduledView.scaleAnimation(self.mainView.allView)
         self.mainView.allView.backgroundColor = .blue
     }
     
     @objc func flaggedViewTapped() {
+        self.mainView.flaggedView.scaleAnimation(self.mainView.flaggedView)
         self.mainView.flaggedView.backgroundColor = .blue
     }
 }
