@@ -14,6 +14,7 @@ class MainView: UIView {
     let scheduledView = CategoriesView(imageName: "calendar", counter: "10", name: "Programados")
     let allView = CategoriesView(imageName: "calendar", counter: "7", name: "Todos")
     let flaggedView = CategoriesView(imageName: "calendar", counter: "1", name: "Sinalizados")
+    let myListsView: MyListsView
     
     lazy var firstStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [self.todayView,self.scheduledView])
@@ -41,6 +42,8 @@ class MainView: UIView {
     }()
     
     override init(frame: CGRect) {
+        myListsView = MyListsView()
+        
         super.init(frame: frame)
         backgroundColor = .systemBackground
         
@@ -64,6 +67,7 @@ extension MainView {
         addSubview(firstStackView)
         addSubview(secondStackView)
         addSubviewWithAutoLayout(addListButton)
+        addSubview(myListsView.tableView)
         
     }
 }
@@ -87,15 +91,22 @@ extension MainView {
         
         NSLayoutConstraint.activate([
             secondStackView.topAnchor.constraint(equalTo:firstStackView.bottomAnchor,constant: 10),
-                   secondStackView.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 10),
-                   secondStackView.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -10),
-                   secondStackView.heightAnchor.constraint(equalToConstant: 100),
-                   
-               ])
+            secondStackView.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 10),
+            secondStackView.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -10),
+            secondStackView.heightAnchor.constraint(equalToConstant: 100),
+            
+        ])
         
         NSLayoutConstraint.activate([
             addListButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -9),
             addListButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12)
+        ])
+        
+        NSLayoutConstraint.activate([
+            myListsView.tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            myListsView.tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            myListsView.tableView.topAnchor.constraint(equalTo: secondStackView.bottomAnchor, constant: 10),
+            myListsView.tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

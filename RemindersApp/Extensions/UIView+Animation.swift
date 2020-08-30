@@ -18,6 +18,7 @@ extension UIView {
                        completion: { _ in
                         UIView.animate(withDuration: 0.4) {
                             view.transform = CGAffineTransform.identity
+                            view.backgroundColor = .systemGray
                         }
         })
     }

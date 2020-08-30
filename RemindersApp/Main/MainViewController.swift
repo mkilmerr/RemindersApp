@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerCell()
         addCategoriesViewTarget()
         setupSearchBar()
         setupNavigationButton()
@@ -26,8 +27,50 @@ class MainViewController: UIViewController {
         
     }
     
-
 }
+
+
+//MARK:- REGISTER TABLE VIEW CELL
+
+extension MainViewController : UITableViewDataSource, UITableViewDelegate {
+    func registerCell() {
+        mainView.myListsView.tableView.delegate = self
+        mainView.myListsView.tableView.dataSource = self
+        mainView.myListsView.tableView.register(MyListsTableViewCell.self, forCellReuseIdentifier: MyListsTableViewCell.cellIdentifier)
+        
+    }
+}
+
+//MARK:- TABLE VIEW METHODS
+
+extension MainViewController {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MyListsTableViewCell.cellIdentifier , for: indexPath) as! MyListsTableViewCell
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let titleLabel = UILabel()
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(titleLabel)
+        titleLabel.leadingAnchor.constraint(equalTo: mainView.firstStackView.leadingAnchor).isActive = true
+        titleLabel.text = "My Lists"
+        return titleLabel
+    }
+}
+
+
 
 //MARK:- NAVIGATION ITEM
 
@@ -38,7 +81,7 @@ extension MainViewController {
     }
     
     @objc func editTapped() {
-       self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupNavigationButton))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupNavigationButton))
     }
 }
 
