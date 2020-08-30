@@ -24,10 +24,7 @@ class MainViewController: UIViewController {
         setupNavigationButton()
         
         
-        
     }
-    
-    
     
 }
 

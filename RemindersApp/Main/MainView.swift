@@ -33,6 +33,13 @@ class MainView: UIView {
         return stack
     }()
     
+    lazy var addListButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Add List", for: .normal)
+        
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
@@ -55,7 +62,8 @@ extension MainView {
     func setupComponents() {
         
         addSubview(firstStackView)
-       addSubview(secondStackView)
+        addSubview(secondStackView)
+        addSubviewWithAutoLayout(addListButton)
         
     }
 }
@@ -84,6 +92,11 @@ extension MainView {
                    secondStackView.heightAnchor.constraint(equalToConstant: 100),
                    
                ])
+        
+        NSLayoutConstraint.activate([
+            addListButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -9),
+            addListButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12)
+        ])
     }
 }
 
