@@ -203,6 +203,8 @@ extension MainViewController {
 
 extension MainViewController {
     @objc func addListTapped() {
-        print("TAP")
-    }
+        let newListViewController = NewListViewController()
+        newListViewController.modalPresentationStyle = .automatic
+        self.present(newListViewController,animated: true)
+}
 }
