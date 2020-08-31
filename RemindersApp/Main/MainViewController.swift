@@ -10,7 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    
+    var models = [
+        "first",
+        "second",
+        "third",
+        "fourth"
+    ]
     let mainView = MainView()
     
     override func loadView() {
@@ -45,18 +50,18 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MyListsTableViewCell.cellIdentifier , for: indexPath) as! MyListsTableViewCell
+        cell.categorieName.text = self.models[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -68,6 +73,14 @@ extension MainViewController {
         titleLabel.text = "My Lists"
         return titleLabel
     }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        self.models.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+    }
 }
 
 
@@ -77,10 +90,16 @@ extension MainViewController {
 extension MainViewController {
     
     @objc func setupNavigationButton() {
+         self.mainView.myListsView.tableView.isEditing = false
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
     }
     
     @objc func editTapped() {
+        if self.mainView.myListsView.tableView.isEditing {
+             self.mainView.myListsView.tableView.isEditing = false
+        }else {
+             self.mainView.myListsView.tableView.isEditing = true
+        }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupNavigationButton))
     }
 }
