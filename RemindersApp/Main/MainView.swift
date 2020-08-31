@@ -14,7 +14,7 @@ class MainView: UIView {
     let scheduledView = CategoriesView(imageName: "calendar", counter: "10", name: "Programados")
     let allView = CategoriesView(imageName: "calendar", counter: "7", name: "Todos")
     let flaggedView = CategoriesView(imageName: "calendar", counter: "1", name: "Sinalizados")
-    let myListsView: MyListsView
+    let myListsView =  MyListsView()
     
     lazy var firstStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [self.todayView,self.scheduledView])
@@ -42,7 +42,6 @@ class MainView: UIView {
     }()
     
     override init(frame: CGRect) {
-        myListsView = MyListsView()
         
         super.init(frame: frame)
         backgroundColor = .systemBackground

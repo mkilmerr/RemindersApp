@@ -29,7 +29,6 @@ class MainViewController: UIViewController {
         setupSearchBar()
         setupNavigationButton()
         
-        
     }
     
 }
@@ -56,6 +55,7 @@ extension MainViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MyListsTableViewCell.cellIdentifier , for: indexPath) as! MyListsTableViewCell
         cell.categorieName.text = self.models[indexPath.row]
+        
         return cell
     }
     
@@ -158,22 +158,30 @@ extension MainViewController {
 extension MainViewController {
     
     @objc func todayViewTapped() {
+        let todayViewController = TodayViewController()
         self.mainView.todayView.scaleAnimation(self.mainView.todayView)
         self.mainView.todayView.backgroundColor = .blue
+        self.navigationController?.pushViewController(todayViewController, animated: true)
     }
     
     @objc func scheduledViewTapped() {
+        let scheduledViewController = ScheduledViewController()
         self.mainView.scheduledView.scaleAnimation(self.mainView.scheduledView)
         self.mainView.scheduledView.backgroundColor = .blue
+        self.navigationController?.pushViewController(scheduledViewController, animated: true)
     }
     
     @objc func allViewTapped() {
+        let allViewController = AllViewController()
         self.mainView.scheduledView.scaleAnimation(self.mainView.allView)
         self.mainView.allView.backgroundColor = .blue
+        self.navigationController?.pushViewController(allViewController, animated: true)
     }
     
     @objc func flaggedViewTapped() {
+        let flaggedViewController = FlaggedViewController()
         self.mainView.flaggedView.scaleAnimation(self.mainView.flaggedView)
         self.mainView.flaggedView.backgroundColor = .blue
+        self.navigationController?.pushViewController(flaggedViewController, animated: true)
     }
 }

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		642B729224FD26D2000C8769 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B729124FD26D2000C8769 /* TodayViewController.swift */; };
+		642B729424FD26EF000C8769 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B729324FD26EF000C8769 /* TodayView.swift */; };
+		642B729724FD28E0000C8769 /* ScheduledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B729624FD28E0000C8769 /* ScheduledViewController.swift */; };
+		642B729924FD29A5000C8769 /* ScheduledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B729824FD29A5000C8769 /* ScheduledView.swift */; };
+		642B729B24FD29D0000C8769 /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B729A24FD29D0000C8769 /* AllView.swift */; };
+		642B729E24FD29FC000C8769 /* AllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B729D24FD29FC000C8769 /* AllViewController.swift */; };
+		642B72A124FD2A29000C8769 /* FlaggedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B72A024FD2A29000C8769 /* FlaggedViewController.swift */; };
+		642B72A324FD2A4F000C8769 /* FlaggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B72A224FD2A4F000C8769 /* FlaggedView.swift */; };
 		6433E86E24FBB4500047FD1E /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433E86D24FBB4500047FD1E /* UIView+Animation.swift */; };
 		6433E87124FBB6420047FD1E /* MyListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433E87024FBB6420047FD1E /* MyListsViewController.swift */; };
 		6433E87324FBB6790047FD1E /* MyListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433E87224FBB6790047FD1E /* MyListsView.swift */; };
@@ -41,6 +49,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		642B729124FD26D2000C8769 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		642B729324FD26EF000C8769 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		642B729624FD28E0000C8769 /* ScheduledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledViewController.swift; sourceTree = "<group>"; };
+		642B729824FD29A5000C8769 /* ScheduledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledView.swift; sourceTree = "<group>"; };
+		642B729A24FD29D0000C8769 /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
+		642B729D24FD29FC000C8769 /* AllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllViewController.swift; sourceTree = "<group>"; };
+		642B72A024FD2A29000C8769 /* FlaggedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggedViewController.swift; sourceTree = "<group>"; };
+		642B72A224FD2A4F000C8769 /* FlaggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggedView.swift; sourceTree = "<group>"; };
 		6433E86D24FBB4500047FD1E /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		6433E87024FBB6420047FD1E /* MyListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsViewController.swift; sourceTree = "<group>"; };
 		6433E87224FBB6790047FD1E /* MyListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsView.swift; sourceTree = "<group>"; };
@@ -88,6 +104,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		642B729024FD26B8000C8769 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				642B729124FD26D2000C8769 /* TodayViewController.swift */,
+				642B729324FD26EF000C8769 /* TodayView.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		642B729524FD2813000C8769 /* Scheduled */ = {
+			isa = PBXGroup;
+			children = (
+				642B729624FD28E0000C8769 /* ScheduledViewController.swift */,
+				642B729824FD29A5000C8769 /* ScheduledView.swift */,
+			);
+			path = Scheduled;
+			sourceTree = "<group>";
+		};
+		642B729C24FD29EA000C8769 /* All */ = {
+			isa = PBXGroup;
+			children = (
+				642B729A24FD29D0000C8769 /* AllView.swift */,
+				642B729D24FD29FC000C8769 /* AllViewController.swift */,
+			);
+			path = All;
+			sourceTree = "<group>";
+		};
+		642B729F24FD2A1A000C8769 /* Flagged */ = {
+			isa = PBXGroup;
+			children = (
+				642B72A024FD2A29000C8769 /* FlaggedViewController.swift */,
+				642B72A224FD2A4F000C8769 /* FlaggedView.swift */,
+			);
+			path = Flagged;
+			sourceTree = "<group>";
+		};
 		6433E86F24FBB6240047FD1E /* MyLists */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +173,10 @@
 		645FCE8E24FA83CA00145A32 /* RemindersApp */ = {
 			isa = PBXGroup;
 			children = (
+				642B729F24FD2A1A000C8769 /* Flagged */,
+				642B729C24FD29EA000C8769 /* All */,
+				642B729524FD2813000C8769 /* Scheduled */,
+				642B729024FD26B8000C8769 /* Today */,
 				6433E86F24FBB6240047FD1E /* MyLists */,
 				645FCEC824FA86E700145A32 /* Extensions */,
 				645FCEC524FA85A500145A32 /* Categories */,
@@ -317,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				645FCE9024FA83CA00145A32 /* AppDelegate.swift in Sources */,
+				642B72A324FD2A4F000C8769 /* FlaggedView.swift in Sources */,
 				6433E87524FBB99F0047FD1E /* MyListsTableViewCell.swift in Sources */,
 				645FCEC724FA85DC00145A32 /* CategoriesView.swift in Sources */,
 				6433E87324FBB6790047FD1E /* MyListsView.swift in Sources */,
@@ -324,8 +381,15 @@
 				645FCECA24FA86FF00145A32 /* UIView+AutoLayout.swift in Sources */,
 				645FCE9224FA83CA00145A32 /* SceneDelegate.swift in Sources */,
 				645FCEC424FA851B00145A32 /* MainView.swift in Sources */,
+				642B729924FD29A5000C8769 /* ScheduledView.swift in Sources */,
+				642B729724FD28E0000C8769 /* ScheduledViewController.swift in Sources */,
+				642B729E24FD29FC000C8769 /* AllViewController.swift in Sources */,
 				6433E86E24FBB4500047FD1E /* UIView+Animation.swift in Sources */,
+				642B72A124FD2A29000C8769 /* FlaggedViewController.swift in Sources */,
+				642B729B24FD29D0000C8769 /* AllView.swift in Sources */,
 				645FCEC124FA845B00145A32 /* MainViewController.swift in Sources */,
+				642B729424FD26EF000C8769 /* TodayView.swift in Sources */,
+				642B729224FD26D2000C8769 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
