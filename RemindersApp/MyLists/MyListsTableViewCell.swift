@@ -14,13 +14,14 @@ class MyListsTableViewCell: UITableViewCell {
     lazy var categorieImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "calendar")
+        image.tintColor = UIColor.label
         image.contentMode = .scaleAspectFit
         image.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         return image
     }()
     
     lazy var categorieName: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Categorie Name"
         label.font = UIFont.systemFont(ofSize: 15)
         return label
@@ -39,7 +40,12 @@ class MyListsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .systemBackground
+        backgroundColor = UIColor.systemBackground.withAlphaComponent(0.1)
+        //layer.shadowColor = UIColor.black.cgColor
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
+       
+//        layer.shadowOpacity = 0.5
         setupComponents()
         setupConstraints()
     }
@@ -55,7 +61,7 @@ class MyListsTableViewCell: UITableViewCell {
 extension MyListsTableViewCell {
     func setupComponents() {
         addSubview(stackView)
-      
+        
     }
 }
 
@@ -72,7 +78,7 @@ extension MyListsTableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            //categorieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 0),
+            categorieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30),
             categorieImage.topAnchor.constraint(equalTo: self.topAnchor),
             categorieImage.widthAnchor.constraint(equalToConstant: 30),
             categorieImage.heightAnchor.constraint(equalToConstant: 30)

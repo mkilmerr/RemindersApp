@@ -63,7 +63,6 @@ extension MainViewController {
         return 100
     }
     
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
@@ -81,6 +80,15 @@ extension MainViewController {
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         self.models.swapAt(sourceIndexPath.row, destinationIndexPath.row)
     }
+     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            self.models.remove(at: indexPath.row)
+            tableView.reloadData()
+        })
+
+        return [deleteAction]
+    }
 }
 
 
@@ -90,15 +98,15 @@ extension MainViewController {
 extension MainViewController {
     
     @objc func setupNavigationButton() {
-         self.mainView.myListsView.tableView.isEditing = false
+        self.mainView.myListsView.tableView.isEditing = false
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
     }
     
     @objc func editTapped() {
         if self.mainView.myListsView.tableView.isEditing {
-             self.mainView.myListsView.tableView.isEditing = false
+            self.mainView.myListsView.tableView.isEditing = false
         }else {
-             self.mainView.myListsView.tableView.isEditing = true
+            self.mainView.myListsView.tableView.isEditing = true
         }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setupNavigationButton))
     }

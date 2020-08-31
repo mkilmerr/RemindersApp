@@ -46,7 +46,7 @@ class MainView: UIView {
         
         super.init(frame: frame)
         backgroundColor = .systemBackground
-        
+
         setupComponents()
         setupConstraints()
     }
@@ -97,16 +97,17 @@ extension MainView {
             
         ])
         
-        NSLayoutConstraint.activate([
-            addListButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -9),
-            addListButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12)
-        ])
         
         NSLayoutConstraint.activate([
             myListsView.tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             myListsView.tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             myListsView.tableView.topAnchor.constraint(equalTo: secondStackView.bottomAnchor, constant: 10),
             myListsView.tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            addListButton.bottomAnchor.constraint(equalTo: self.myListsView.tableView.bottomAnchor, constant: -9),
+            addListButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12)
         ])
     }
 }
