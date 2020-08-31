@@ -9,8 +9,11 @@
 import UIKit
 
 class TodayView: UIView {
-
+    let tableView: UITableView
+    
     override init(frame: CGRect) {
+        tableView = UITableView()
+        
         super.init(frame: frame)
         backgroundColor = .blue
     }

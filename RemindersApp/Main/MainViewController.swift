@@ -63,6 +63,18 @@ extension MainViewController {
         return 100
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50))
+        footerView.backgroundColor = .systemBackground
+        let addList = UIButton(type: .system)
+        addList.setTitle("Add List", for: .normal)
+        footerView.addSubview(addList)
+        addList.translatesAutoresizingMaskIntoConstraints = false
+        addList.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -14).isActive = true
+        addList.addTarget(self, action: #selector(addListTapped), for: .allTouchEvents)
+        return footerView
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
@@ -183,5 +195,14 @@ extension MainViewController {
         self.mainView.flaggedView.scaleAnimation(self.mainView.flaggedView)
         self.mainView.flaggedView.backgroundColor = .blue
         self.navigationController?.pushViewController(flaggedViewController, animated: true)
+    }
+    
+}
+
+//MARK:- BUTTON TARGETS
+
+extension MainViewController {
+    @objc func addListTapped() {
+        print("TAP")
     }
 }
