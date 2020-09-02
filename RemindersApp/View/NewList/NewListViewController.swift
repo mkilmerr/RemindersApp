@@ -46,9 +46,21 @@ extension NewListViewController {
     }
     
     @objc func doneTapped() {
-        self.categorieProtocol?.addCategorieProtocol(name: categorieTextField.text!, image: self.newListView.categorieImage.image!)
-        self.dismiss(animated: true)
+        if let text =  self.categorieTextField.text  {
+            if text.isEmpty {
+                let alert = UIAlertController(title: "Invalid field", message: "fill the fields correctly", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.categorieProtocol?.addCategorieProtocol(name: categorieTextField.text!, image: self.newListView.categorieImage.image!)
+                     self.dismiss(animated: true)
+        }
+       
+        }
+     
     }
+    
+   
 }
 
 //MARK:- TEXTFIELD CONSTRAINTS
