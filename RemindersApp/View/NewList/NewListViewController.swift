@@ -8,7 +8,7 @@
 
 import UIKit
 protocol CategorieProtocol {
-    func addCategorieProtocol(name:String, image:UIImage)
+    func addCategorieProtocol(name:String, image:UIImageView, color:UIColor)
 }
 class NewListViewController: UIViewController {
     var categorieProtocol: CategorieProtocol?
@@ -31,7 +31,7 @@ class NewListViewController: UIViewController {
         newListView.cancelButton.addTarget(self, action: #selector(cancelTapped), for: .allTouchEvents)
         newListView.doneButton.addTarget(self, action: #selector(doneTapped), for: .touchUpInside)
         self.categorieTextField.delegate = self
-
+        
         setupTextFieldConstraints()
     }
     
@@ -46,21 +46,11 @@ extension NewListViewController {
     }
     
     @objc func doneTapped() {
-        if let text =  self.categorieTextField.text  {
-            if text.isEmpty {
-                let alert = UIAlertController(title: "Invalid field", message: "fill the fields correctly", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                self.categorieProtocol?.addCategorieProtocol(name: categorieTextField.text!, image: self.newListView.categorieImage.image!)
-                     self.dismiss(animated: true)
-        }
-       
-        }
-     
+        self.categorieProtocol?.addCategorieProtocol(name: categorieTextField.text!, image: self.newListView.categorieImage, color: self.newListView.backgroundCategorieImage.backgroundColor!)
+              self.dismiss(animated: true)
     }
     
-   
+    
 }
 
 //MARK:- TEXTFIELD CONSTRAINTS

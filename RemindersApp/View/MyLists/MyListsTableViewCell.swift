@@ -14,9 +14,9 @@ class MyListsTableViewCell: UITableViewCell {
     lazy var categorieImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "calendar")
-        image.tintColor = UIColor.label
+        image.tintColor = .red
         image.contentMode = .scaleAspectFit
-        image.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
         return image
     }()
     
@@ -41,10 +41,11 @@ class MyListsTableViewCell: UITableViewCell {
         didSet {
             if let categorieImageModel = categorie?.image, let categorieNameModel = categorie?.name {
                 
-                  self.categorieImage.image = categorieImageModel
-                  self.categorieName.text = categorieNameModel
+                self.categorieImage.image = categorieImageModel.image
+                self.categorieImage.tintColor = categorie?.color
+                self.categorieName.text = categorieNameModel
             }
-          
+            
         }
     }
     static var  cellIdentifier = "MyListsTableViewCell"
@@ -55,8 +56,8 @@ class MyListsTableViewCell: UITableViewCell {
         //layer.shadowColor = UIColor.black.cgColor
         layer.cornerRadius = 10
         layer.masksToBounds = true
-       
-//        layer.shadowOpacity = 0.5
+        
+        //        layer.shadowOpacity = 0.5
         setupComponents()
         setupConstraints()
     }
@@ -87,12 +88,11 @@ extension MyListsTableViewCell {
             stackView.heightAnchor.constraint(equalToConstant: 100),
             
         ])
-        
         NSLayoutConstraint.activate([
             categorieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30),
             categorieImage.topAnchor.constraint(equalTo: self.topAnchor),
-            categorieImage.widthAnchor.constraint(equalToConstant: 30),
-            categorieImage.heightAnchor.constraint(equalToConstant: 30)
+            categorieImage.widthAnchor.constraint(equalToConstant: 50),
+            categorieImage.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

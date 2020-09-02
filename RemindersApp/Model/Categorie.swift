@@ -9,6 +9,7 @@
 import UIKit
 
  struct Categorie {
-    let image: UIImage
+    let image: UIImageView
     let name: String
+    let color: UIColor
  }

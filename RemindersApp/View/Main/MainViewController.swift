@@ -11,13 +11,13 @@ import UIKit
 class MainViewController: UIViewController {
     let categorieViewModel = CategorieViewModel()
     
-//    var models = [
-//        "first",
-//        "second",
-//        "third",
-//        "fourth"
-//    ]
-    
+    //    var models = [
+    //        "first",
+    //        "second",
+    //        "third",
+    //        "fourth"
+    //    ]
+    let newListViewController = NewListViewController()
     let mainView = MainView()
     
     override func loadView() {
@@ -59,7 +59,7 @@ extension MainViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: MyListsTableViewCell.cellIdentifier , for: indexPath) as! MyListsTableViewCell
         
         cell.categorie = self.categorieViewModel.categorieArray[indexPath.row]
-        print(indexPath.row)
+        
         return cell
     }
     
@@ -96,13 +96,13 @@ extension MainViewController {
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         self.categorieViewModel.categorieArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
     }
-     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-           self.categorieViewModel.categorieArray.remove(at: indexPath.row)
+            self.categorieViewModel.categorieArray.remove(at: indexPath.row)
             tableView.reloadData()
         })
-
+        
         return [deleteAction]
     }
 }
@@ -207,26 +207,25 @@ extension MainViewController {
 
 extension MainViewController {
     @objc func addListTapped() {
-        print("KKKKKKK")
-        let newListViewController = NewListViewController()
+        
         newListViewController.categorieProtocol = self
         newListViewController.modalPresentationStyle = .automatic
         self.present(newListViewController,animated: true)
-}
+    }
     
 }
 
 //MARK:- CATEGORIE DELEGATE
 
 extension MainViewController:CategorieProtocol {
-    func addCategorieProtocol(name: String, image: UIImage) {
-      let categorie = Categorie(image: image, name: name)
-     
+    func addCategorieProtocol(name: String, image: UIImageView, color: UIColor) {
+        let categorie = Categorie(image: image, name: name, color: color)
+        
         DispatchQueue.main.async {
+            
             self.categorieViewModel.addCategorie(categorie)
             self.mainView.myListsView.tableView.reloadData()
         }
     }
-    
-    
 }
+
