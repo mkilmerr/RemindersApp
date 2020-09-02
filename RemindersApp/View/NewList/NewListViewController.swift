@@ -7,8 +7,12 @@
 //
 
 import UIKit
-
+protocol CategorieProtocol {
+    func addCategorieProtocol(name:String, image:UIImage)
+}
 class NewListViewController: UIViewController {
+    var categorieProtocol: CategorieProtocol?
+    
     let newListView = NewListView()
     
     lazy var categorieTextField: UITextField = {
@@ -25,7 +29,9 @@ class NewListViewController: UIViewController {
         view = newListView
         
         newListView.cancelButton.addTarget(self, action: #selector(cancelTapped), for: .allTouchEvents)
+        newListView.doneButton.addTarget(self, action: #selector(doneTapped), for: .touchUpInside)
         self.categorieTextField.delegate = self
+
         setupTextFieldConstraints()
     }
     
@@ -35,7 +41,12 @@ class NewListViewController: UIViewController {
 //MARK:- BUTTON TARGETS
 
 extension NewListViewController {
-    @objc func cancelTapped(){
+    @objc func cancelTapped() {
+        self.dismiss(animated: true)
+    }
+    
+    @objc func doneTapped() {
+        self.categorieProtocol?.addCategorieProtocol(name: categorieTextField.text!, image: self.newListView.categorieImage.image!)
         self.dismiss(animated: true)
     }
 }

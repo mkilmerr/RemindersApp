@@ -19,6 +19,8 @@
 		6433E87124FBB6420047FD1E /* MyListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433E87024FBB6420047FD1E /* MyListsViewController.swift */; };
 		6433E87324FBB6790047FD1E /* MyListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433E87224FBB6790047FD1E /* MyListsView.swift */; };
 		6433E87524FBB99F0047FD1E /* MyListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433E87424FBB99F0047FD1E /* MyListsTableViewCell.swift */; };
+		64370AB224FFDE9C00E06EF1 /* Categorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64370AB124FFDE9C00E06EF1 /* Categorie.swift */; };
+		64370AB424FFDF2A00E06EF1 /* CategorieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64370AB324FFDF2A00E06EF1 /* CategorieViewModel.swift */; };
 		6440E29A24FD74E3006CC952 /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440E29924FD74E3006CC952 /* NewListViewController.swift */; };
 		6440E29C24FD7500006CC952 /* NewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440E29B24FD7500006CC952 /* NewListView.swift */; };
 		645FCE9024FA83CA00145A32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645FCE8F24FA83CA00145A32 /* AppDelegate.swift */; };
@@ -63,6 +65,8 @@
 		6433E87024FBB6420047FD1E /* MyListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsViewController.swift; sourceTree = "<group>"; };
 		6433E87224FBB6790047FD1E /* MyListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsView.swift; sourceTree = "<group>"; };
 		6433E87424FBB99F0047FD1E /* MyListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsTableViewCell.swift; sourceTree = "<group>"; };
+		64370AB124FFDE9C00E06EF1 /* Categorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorie.swift; sourceTree = "<group>"; };
+		64370AB324FFDF2A00E06EF1 /* CategorieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieViewModel.swift; sourceTree = "<group>"; };
 		6440E29924FD74E3006CC952 /* NewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListViewController.swift; sourceTree = "<group>"; };
 		6440E29B24FD7500006CC952 /* NewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListView.swift; sourceTree = "<group>"; };
 		645FCE8C24FA83CA00145A32 /* RemindersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemindersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,27 +158,43 @@
 			path = MyLists;
 			sourceTree = "<group>";
 		};
-		64370AAD24FFDCE400E06EF1 /* Scene */ = {
+		64370AAD24FFDCE400E06EF1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6440E29824FD74B9006CC952 /* NewList */,
 				645FCEBF24FA842D00145A32 /* Main */,
 				645FCEC524FA85A500145A32 /* Categories */,
-				642B729024FD26B8000C8769 /* Today */,
 				6433E86F24FBB6240047FD1E /* MyLists */,
 				64370AAE24FFDCFF00E06EF1 /* CategoriesView */,
 			);
-			path = Scene;
+			path = View;
 			sourceTree = "<group>";
 		};
 		64370AAE24FFDCFF00E06EF1 /* CategoriesView */ = {
 			isa = PBXGroup;
 			children = (
-				6440E29824FD74B9006CC952 /* NewList */,
+				642B729024FD26B8000C8769 /* Today */,
 				642B729F24FD2A1A000C8769 /* Flagged */,
 				642B729C24FD29EA000C8769 /* All */,
 				642B729524FD2813000C8769 /* Scheduled */,
 			);
 			path = CategoriesView;
+			sourceTree = "<group>";
+		};
+		64370AAF24FFDE4700E06EF1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				64370AB324FFDF2A00E06EF1 /* CategorieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		64370AB024FFDE8E00E06EF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64370AB124FFDE9C00E06EF1 /* Categorie.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6440E29824FD74B9006CC952 /* NewList */ = {
@@ -209,7 +229,9 @@
 		645FCE8E24FA83CA00145A32 /* RemindersApp */ = {
 			isa = PBXGroup;
 			children = (
-				64370AAD24FFDCE400E06EF1 /* Scene */,
+				64370AB024FFDE8E00E06EF1 /* Model */,
+				64370AAF24FFDE4700E06EF1 /* ViewModel */,
+				64370AAD24FFDCE400E06EF1 /* View */,
 				645FCEC824FA86E700145A32 /* Extensions */,
 				645FCEC224FA848600145A32 /* Supporting Files */,
 				645FCE9824FA83CC00145A32 /* Assets.xcassets */,
@@ -412,12 +434,14 @@
 				645FCECA24FA86FF00145A32 /* UIView+AutoLayout.swift in Sources */,
 				645FCE9224FA83CA00145A32 /* SceneDelegate.swift in Sources */,
 				6440E29C24FD7500006CC952 /* NewListView.swift in Sources */,
+				64370AB424FFDF2A00E06EF1 /* CategorieViewModel.swift in Sources */,
 				645FCEC424FA851B00145A32 /* MainView.swift in Sources */,
 				642B729924FD29A5000C8769 /* ScheduledView.swift in Sources */,
 				642B729724FD28E0000C8769 /* ScheduledViewController.swift in Sources */,
 				642B729E24FD29FC000C8769 /* AllViewController.swift in Sources */,
 				6433E86E24FBB4500047FD1E /* UIView+Animation.swift in Sources */,
 				642B72A124FD2A29000C8769 /* FlaggedViewController.swift in Sources */,
+				64370AB224FFDE9C00E06EF1 /* Categorie.swift in Sources */,
 				642B729B24FD29D0000C8769 /* AllView.swift in Sources */,
 				645FCEC124FA845B00145A32 /* MainViewController.swift in Sources */,
 				642B729424FD26EF000C8769 /* TodayView.swift in Sources */,

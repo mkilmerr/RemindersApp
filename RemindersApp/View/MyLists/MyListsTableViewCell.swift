@@ -36,6 +36,17 @@ class MyListsTableViewCell: UITableViewCell {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    
+    var categorie:Categorie?{
+        didSet {
+            if let categorieImageModel = categorie?.image, let categorieNameModel = categorie?.name {
+                
+                  self.categorieImage.image = categorieImageModel
+                  self.categorieName.text = categorieNameModel
+            }
+          
+        }
+    }
     static var  cellIdentifier = "MyListsTableViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

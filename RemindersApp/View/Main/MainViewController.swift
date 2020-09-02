@@ -9,13 +9,15 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    let categorieViewModel = CategorieViewModel()
     
-    var models = [
-        "first",
-        "second",
-        "third",
-        "fourth"
-    ]
+//    var models = [
+//        "first",
+//        "second",
+//        "third",
+//        "fourth"
+//    ]
+    
     let mainView = MainView()
     
     override func loadView() {
@@ -28,6 +30,7 @@ class MainViewController: UIViewController {
         addCategoriesViewTarget()
         setupSearchBar()
         setupNavigationButton()
+        
         
     }
     
@@ -49,13 +52,14 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.models.count
+        return self.categorieViewModel.categorieArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MyListsTableViewCell.cellIdentifier , for: indexPath) as! MyListsTableViewCell
-        cell.categorieName.text = self.models[indexPath.row]
         
+        cell.categorie = self.categorieViewModel.categorieArray[indexPath.row]
+        print(indexPath.row)
         return cell
     }
     
@@ -71,7 +75,7 @@ extension MainViewController {
         footerView.addSubview(addList)
         addList.translatesAutoresizingMaskIntoConstraints = false
         addList.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -14).isActive = true
-        addList.addTarget(self, action: #selector(addListTapped), for: .allTouchEvents)
+        addList.addTarget(self, action: #selector(addListTapped), for: .touchUpInside)
         return footerView
     }
     
@@ -90,12 +94,12 @@ extension MainViewController {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        self.models.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        self.categorieViewModel.categorieArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
     }
      func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-            self.models.remove(at: indexPath.row)
+           self.categorieViewModel.categorieArray.remove(at: indexPath.row)
             tableView.reloadData()
         })
 
@@ -203,8 +207,26 @@ extension MainViewController {
 
 extension MainViewController {
     @objc func addListTapped() {
+        print("KKKKKKK")
         let newListViewController = NewListViewController()
+        newListViewController.categorieProtocol = self
         newListViewController.modalPresentationStyle = .automatic
         self.present(newListViewController,animated: true)
 }
+    
+}
+
+//MARK:- CATEGORIE DELEGATE
+
+extension MainViewController:CategorieProtocol {
+    func addCategorieProtocol(name: String, image: UIImage) {
+      let categorie = Categorie(image: image, name: name)
+     
+        DispatchQueue.main.async {
+            self.categorieViewModel.addCategorie(categorie)
+            self.mainView.myListsView.tableView.reloadData()
+        }
+    }
+    
+    
 }

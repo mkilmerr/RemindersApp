@@ -47,7 +47,7 @@ class NewListView: UIView {
     
     lazy var categorieImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "list")
+        image.image = UIImage(systemName: "calendar")
         image.tintColor = .white
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
