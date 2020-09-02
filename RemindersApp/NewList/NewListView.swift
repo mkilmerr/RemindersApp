@@ -9,6 +9,9 @@
 import UIKit
 
 class NewListView: UIView {
+    lazy var contentViewSize = CGSize(width: self.frame.width, height: self.frame.height + 100)
+    lazy var colors:[UIColor] = [.red,.gray,.blue,.brown, .green, .purple]
+    lazy var secondColor:[UIColor] = [.systemPink,.magenta,.black,.orange,.systemTeal,.tertiarySystemFill]
     
     lazy var cancelButton: UIButton =  {
         let button = UIButton(type: .system)
@@ -35,7 +38,7 @@ class NewListView: UIView {
         let stack = UIStackView(arrangedSubviews: [self.cancelButton, self.newListTextTitle, self.doneButton])
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 100
+        stack.spacing = 80
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -59,9 +62,44 @@ class NewListView: UIView {
     }()
     
     
+    lazy var colorStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 8
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    lazy var secondColorStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 8
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+        
+    }()
+    
+    lazy var scrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.backgroundColor = .systemBackground
+        scroll.contentSize = CGSize(width: 200, height: 2000)
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        return scroll
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
+        
+        
+        self.colors.forEach { (color) in
+            self.createColorButton(color,stack: self.colorStackView)
+        }
+        self.secondColor.forEach { (color) in
+            self.createColorButton(color, stack: self.secondColorStackView)
+        }
         
         setupComponents()
         setupConstraints()
@@ -80,6 +118,13 @@ extension NewListView {
         addSubview(headerStackView)
         backgroundCategorieImage.addSubview(categorieImage)
         addSubviewWithAutoLayout(backgroundCategorieImage)
+        //        addSubview(colorStackView)
+        //        addSubview(secondColorStackView)
+        addSubview(scrollView)
+        
+        scrollView.addSubview(colorStackView)
+        scrollView.addSubview(secondColorStackView)
+        
     }
 }
 
@@ -89,7 +134,7 @@ extension NewListView {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             headerStackView.topAnchor.constraint(equalTo:topAnchor),
-            headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 7)
+            headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0)
         ])
         
         NSLayoutConstraint.activate([
@@ -104,5 +149,42 @@ extension NewListView {
             backgroundCategorieImage.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
+        
+        NSLayoutConstraint.activate([
+            colorStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            colorStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            secondColorStackView.topAnchor.constraint(equalTo: colorStackView.bottomAnchor, constant: 10),
+            secondColorStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: backgroundCategorieImage.bottomAnchor, constant: 100),
+            scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            scrollView.heightAnchor.constraint(equalTo: self.heightAnchor)
+        ])
+    }
+}
+
+//MARK:- COLOR BUTTONS
+
+extension NewListView {
+    func createColorButton(_ color:UIColor, stack:UIStackView){
+        let button = UIButton(type: .system)
+        button.backgroundColor = color
+        button.layer.cornerRadius =   25
+        button.clipsToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.addTarget(self, action: #selector(colorButtonTapped(_:)), for: .allEvents)
+        stack.addArrangedSubview(button)
+        
+    }
+    
+    @objc func colorButtonTapped(_ sender:UIButton){
+        self.backgroundCategorieImage.backgroundColor = sender.backgroundColor
     }
 }
