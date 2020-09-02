@@ -13,6 +13,8 @@ class NewListViewController: UIViewController {
     
     lazy var categorieTextField: UITextField = {
         let text = UITextField()
+        text.font = UIFont.boldSystemFont(ofSize: 30)
+        text.clearButtonMode = .whileEditing
         text.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
         text.layer.cornerRadius = 10
         return text
@@ -23,7 +25,7 @@ class NewListViewController: UIViewController {
         view = newListView
         
         newListView.cancelButton.addTarget(self, action: #selector(cancelTapped), for: .allTouchEvents)
-        
+        self.categorieTextField.delegate = self
         setupTextFieldConstraints()
     }
     
@@ -51,6 +53,32 @@ extension NewListViewController {
             categorieTextField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         
+    }
+}
+
+//MARK:- TEXTFIELD DELEGATE METHODS
+
+extension NewListViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("DidBeginEditing")
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true;
+    }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true;
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true;
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true;
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return true;
     }
 }
 

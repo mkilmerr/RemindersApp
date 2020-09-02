@@ -154,6 +154,29 @@
 			path = MyLists;
 			sourceTree = "<group>";
 		};
+		64370AAD24FFDCE400E06EF1 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				645FCEBF24FA842D00145A32 /* Main */,
+				645FCEC524FA85A500145A32 /* Categories */,
+				642B729024FD26B8000C8769 /* Today */,
+				6433E86F24FBB6240047FD1E /* MyLists */,
+				64370AAE24FFDCFF00E06EF1 /* CategoriesView */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		64370AAE24FFDCFF00E06EF1 /* CategoriesView */ = {
+			isa = PBXGroup;
+			children = (
+				6440E29824FD74B9006CC952 /* NewList */,
+				642B729F24FD2A1A000C8769 /* Flagged */,
+				642B729C24FD29EA000C8769 /* All */,
+				642B729524FD2813000C8769 /* Scheduled */,
+			);
+			path = CategoriesView;
+			sourceTree = "<group>";
+		};
 		6440E29824FD74B9006CC952 /* NewList */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,16 +209,9 @@
 		645FCE8E24FA83CA00145A32 /* RemindersApp */ = {
 			isa = PBXGroup;
 			children = (
-				6440E29824FD74B9006CC952 /* NewList */,
-				642B729F24FD2A1A000C8769 /* Flagged */,
-				642B729C24FD29EA000C8769 /* All */,
-				642B729524FD2813000C8769 /* Scheduled */,
-				642B729024FD26B8000C8769 /* Today */,
-				6433E86F24FBB6240047FD1E /* MyLists */,
+				64370AAD24FFDCE400E06EF1 /* Scene */,
 				645FCEC824FA86E700145A32 /* Extensions */,
-				645FCEC524FA85A500145A32 /* Categories */,
 				645FCEC224FA848600145A32 /* Supporting Files */,
-				645FCEBF24FA842D00145A32 /* Main */,
 				645FCE9824FA83CC00145A32 /* Assets.xcassets */,
 				645FCE9A24FA83CC00145A32 /* LaunchScreen.storyboard */,
 				645FCE9D24FA83CC00145A32 /* Info.plist */,
